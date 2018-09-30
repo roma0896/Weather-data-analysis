@@ -14,6 +14,8 @@ headers["X-Yandex-API-Key"] = "94c88e57-a2df-4706-8a71-7e1ff43b692b"
 
 
 Points = [ [0] * 14  for i in range(3)]
+Points[0][0] = True
+Points[1][2] = True
 Coordinates = [0] * 3
 Coordinates[0] = [55.7443330, 37.622608]
 Coordinates[1] =[-33.890876, 151.207664]
@@ -43,10 +45,7 @@ def main():
     global Points
     for i in range(3):
         Points[i] = Points[i][1:] + [0]
-
     forecast()
-
-
     for i in range(3):
         pour_today = False
         rain_day_last = -1
@@ -68,11 +67,10 @@ def main():
             url_map = "https://static-maps.yandex.ru/1.x/?l=map&size=500,400&pl=c:f45642FF,f:e56f60A0,w:4," + ','.join(map(str, Coor_rect[i]))
             webbrowser.open(url_map)
         else:
-
             url_map = "https://static-maps.yandex.ru/1.x/?l=map&size=500,400&pl=c:85c124FF,f:9fdd3bA0,w:4," + ','.join(map(str, Coor_rect[i]))
             webbrowser.open(url_map)
 
-    time.sleep(60)
+    time.sleep(86400)
     main()
 
 main()
